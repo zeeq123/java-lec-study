@@ -16,7 +16,7 @@ class Cat extends Animal{
     @Override
     void speak() {
         System.out.println("야옹");
-    }  // Animal에 있던 Speak을 재정의, 동적 파인딩
+    }  // Animal에 있던 Speak을 재정의, 동적 바인딩
 }
 
 public class AnimalEx01 {
