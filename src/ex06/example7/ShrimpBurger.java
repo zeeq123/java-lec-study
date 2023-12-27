@@ -6,5 +6,6 @@ public class ShrimpBurger extends Burger {
     public ShrimpBurger(String name, int price, String material) {
         super(name, price);
         this.material = material;
+
     }
 }
