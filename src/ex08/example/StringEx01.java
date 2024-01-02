@@ -41,8 +41,7 @@ public class StringEx01 {
             }
 
         }
-        a = new String(String.valueOf(arr));
-        return a;
+        return String.valueOf(arr);
     }
 
     void decoding(){
@@ -52,7 +51,7 @@ public class StringEx01 {
     public static void main(String[] args) {
         String s1 = "AABBBCCCCDDDDD";
         String s2 = "A2B3C4D5";
-        String result = encoding(s1);
-        System.out.println(result);
+
+        System.out.println(encoding(s1));
     }
 }
