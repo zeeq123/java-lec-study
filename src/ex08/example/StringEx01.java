@@ -1,57 +1,47 @@
 package ex08.example;
-// AABBBCCCCDDDDD -> A2B3C4D5 encoding
-// A2B3C4D5 -> AABBBCCCCDDDDD decoding
-
-import ex03.ArrayListTest;
-
-import java.util.ArrayList;
 
 public class StringEx01 {
 
+    public static String encoding(String data) {
+        int num = 1;
+        String result = "";
+        String[] arr = data.split("");
 
-    // charAt(index) 인덱스 위치의 문자를 반환
-    static String encoding(String a){
-        int count = 0;
-        int c = 1;
-        ArrayList<Character> arr = new ArrayList<Character>();
-
-//        char arr[] = new char[a.length()];
-        for (int i = 0; i < a.length(); i++) {
-            if(i == 0){
-                arr.add(a.charAt(i));
-//                arr[i] = a.charAt(i);
-                count++;
+        for(int i = 1; i<data.length(); i++){
+            if(!arr[i-1].equals(arr[i])){
+                result = result + arr[i-1] + num;
+                num = 1;
+                continue;
             }
-            if(i != a.length() - 1){
-                if(a.charAt(i) == a.charAt(i + 1)){
-                    c++;
-                } else if(a.charAt(i) != a.charAt(i + 1)) {
-                    arr.add((char)(c + '0'));
-                    arr.add(a.charAt(i + 1));
-//                    arr[count] = (char)(c + '0');
-//                    count++;
-//                    arr[count] = a.charAt(i + 1);
-//                    count++;
-                    c = 1;
-                }
-            }else{
-                arr.add((char)(c + '0'));
-//                arr[count] = (char)(c + '0');
-//                count++;
-            }
-
+            num++;
         }
-        return String.valueOf(arr);
+        return result;
     }
 
-    void decoding(){
+    public static String decoding(String convert) {
+        String result = "";
+        String[] arr = convert.split("");
 
+        for(int i = 1; i<convert.length(); i++){
+            String s = arr[i-1];
+            int num = Integer.parseInt(arr[i]);
+            for (int j = 0; j < num; j++) {
+                result += s;
+            }
+            i++;
+        }
+        return result;
     }
 
     public static void main(String[] args) {
-        String s1 = "AABBBCCCCDDDDD";
-        String s2 = "A2B3C4D5";
+        String data = "AABBBCCCCDDDDD"; // Byte -> 14Byte
+        String convert = "A2B3C4D5"; //Byte -> 8Byte
 
-        System.out.println(encoding(s1));
+        // 인코딩 A2B3C4D5
+        data += ".";
+        System.out.println(encoding(data));
+
+        // 디코딩 AABBBCCCCDDDDD
+        System.out.println(decoding(convert));
     }
 }
