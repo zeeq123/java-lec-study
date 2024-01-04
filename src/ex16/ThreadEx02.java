@@ -27,7 +27,5 @@ public class ThreadEx02 {
         }).start();
         화가 h =  new 화가();
         h.그림그리기();
-
-
     }
 }
